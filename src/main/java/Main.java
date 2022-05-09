@@ -1,10 +1,13 @@
 import abstractlass.RallyCar;
 import abstractlass.RoadCar;
 import abstractlass.Vehicle;
-import dynamic.Person;
 import dynamic.RacingDriver;
 import dynamic.RegularDriver;
 import multi.*;
+import multiaspect.CarDriver;
+import multiaspect.GenderType;
+import multiaspect.Person;
+import multiaspect.TruckDriver;
 import overlapping.Driver;
 import overlapping.DriverType;
 
@@ -18,6 +21,9 @@ public class Main {
         // Abstract class
         Vehicle v1 = new RoadCar("Honda", "petrol", 2.0d, LocalDate.of(1998, 03,20), 4);
         Vehicle v2 = new RallyCar("Toyota", "racing fuel", 1.6d, LocalDate.of(2022, 01, 12), true, true);
+
+        v1.sound();
+        v2.sound();
 
         // Overlapping
         Driver d1 = new Driver("Robert", "Kubica", EnumSet.of(DriverType.RACING));
@@ -47,6 +53,14 @@ public class Main {
         RacingDriver racingDriver = new RacingDriver(sundayDriver, "Alfa Romeo F1 Team", List.of("superlicense, fia platinum license"));
 
         System.out.println(racingDriver.getName());
+
+        //Multi aspect
+        CarDriver carDriver = new CarDriver("test", "Test", "skoda octavia", new Person.Gender(GenderType.FEMALE));
+        TruckDriver truckDriver = new TruckDriver("aaa", "aaa", "transportex", new Person.Gender(GenderType.MALE));
+
+        carDriver.getGender().femaleThings();
+        truckDriver.getGender().maleThings();
+
 
     }
 }
